@@ -8,6 +8,8 @@ import {
   TEST,
 } from 'src/helpers/constant';
 import { Sequelize } from 'sequelize-typescript';
+import { Structure } from 'src/structure/entities/structure.entity';
+import { News } from 'src/news/entities/news.entity';
 
 export const databaseProviders = [
   {
@@ -41,7 +43,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      await sequelize.addModels([]);
+      await sequelize.addModels([Structure, News]);
       await sequelize.sync({ alter: true });
       return sequelize;
     },
